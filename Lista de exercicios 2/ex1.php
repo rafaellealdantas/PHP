@@ -1,4 +1,13 @@
 <!-- Faça um Programa que peça dois números e imprima o maior deles. -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>armazenamento de dois números</title>
+</head>
+<body>
+ 
 <form action="" method="get">
     <p>
         <label for="numero">digite um numero: </label>
@@ -11,6 +20,12 @@
     <button type="submit">enviar</button>
 
 </form>
+
+</body>
+
+</html>
+
+
 <?php 
 
 $num1 = $_GET ['numero'];
