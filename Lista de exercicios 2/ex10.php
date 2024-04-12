@@ -17,16 +17,21 @@
 </body>
 </html>
 <?php
-
-$turno = $_GET['truno'];
+$turno = $_GET['turno'];
+$turno = strtoupper($turno);
 
 switch ($turno) {
     case 'M':
-        echo
+        echo ("Bom dia!!!");
         break;
-    
+    case 'V':
+        echo ("Boa tarde!!!");
+        break;
+    case 'N':
+        echo ("Boa noite!!!");
+        break;
     default:
-        # code...
+        echo ("opção inválida");
         break;
 }
 
