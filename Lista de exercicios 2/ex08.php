@@ -19,6 +19,25 @@
             <label for="val3">digite o valor do primeiro produto: </label>
             <input type="text" id="val3" name="val3">
         </p>
+        <button type="submit">enviar</button>
     </form>
 </body>
 </html>
+<?php
+
+$val1 = $_GET['val1'];
+$val2 = $_GET['val2'];
+$val3 = $_GET['val3'];
+$menor = $val1;
+
+if ($val2 < $menor ) 
+{
+    $menor = $val2;
+}else 
+if($val3 < $menor)
+{
+    $menor = $val3;
+}
+echo ("o menor preço dentre os produtos é: " . $menor);
+
+?>
