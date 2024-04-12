@@ -11,7 +11,23 @@
             <label for="turno">digite o turno que você estuda (M-matutino V-Vespertino N- Noturno): </label>
             <input type="text" id="turno" name="turno">
         </p>
+        <button type="submit">enviar</button>
         
     </form>
 </body>
 </html>
+<?php
+
+$turno = $_GET['truno'];
+
+switch ($turno) {
+    case 'M':
+        echo
+        break;
+    
+    default:
+        # code...
+        break;
+}
+
+?>
