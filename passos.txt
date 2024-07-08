@@ -1,0 +1,91 @@
+minirotas -
+
+1 - arrumar as urls em index
+
+<?php 
+
+    $url = $_GET["url"] ?? null;
+
+    
+    if($url == "feed"){
+        header("Location: ./paginas/feed.php");
+    }else
+    if($url == "login"){
+        header("Location: ./paginas/login.php");
+    }else
+    if($url == "criar"){
+        header("Location: ./paginas/novoUsuario.php");
+    }else
+    if($url == ["menu"]){
+        header("location: ./paginas/feed.php");
+    }
+
+    
+
+?>
+
+login -
+
+1 - abrir a tag php em login.php
+
+2 - importar o banco de dados usando require_once "../config/banco.php";
+
+3 - criar uma variavel $usuario e uma variavel $senha utilizando o metodo post ou get: $usuario = $_POST["usuario"] ?? null;
+    $senha = $_POST["senha"] ?? null; 
+
+4 - testar se esta funcionando usando echo $usuario , $senha;
+
+5 - para testar se usuario e senha existem no banco basta utilizar o metodo da classe banco.php e passar como parametro as
+variaveis: fazerLogin[$usuario , $senha];
+
+6 - colocar a função: fazerLogin[$usuario , $senha]; dentro de um if para testar se não é nulo: 
+    if (!is_null($usuario) && !is_null($senha)){
+       if(fazerLogin($usuario, $senha)){
+        header("location: feed.php");
+       }else{
+    echo "erro";
+    }
+}
+
+o header serve para caso de certo direcione para o feed
+
+7 - para trocar a senha 123 para um passwordhash dentro do banco usar o codigo: echo password_hash("123", PASSWORD_DEFAULT);
+
+8 - ir até login, copiar a hash que esta acima da pagina e colocar no banco no campo senha 
+
+9 - dentro de banco.php trocar o if dentro de fazerLogin para esse if:  if (password_verify($senha, $objUsuario->senha))
+
+criar novo usuario
+
+1 - colocar o: session_start(); no login para que nao possa ser criado um novo login caso o usuario estaja logado
+
+2 - dentro do if de teste de metodo criar as variaveis e chamar o metodo novoUsuario:
+
+        if(!is_null($usuario)){
+            header("Location: ./feed.php");
+        }else{
+
+            // ver se o formulário foi enviado
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                
+                $usuario = $_POST['usuario'] ?? null;
+                $nome = $_POST['nome'] ?? null;
+                $senha = $_POST['senha'] ?? null;
+                $imagemNovoUsuario = enviarImagem("profile"); // função para pegar e salvar a imagem
+                novoUsuario($usuario, $nome, $senha, $imagemNovoUsuario); //-- descomentar quando tiver os valores
+                
+            }
+            
+        }
+
+3 - lembrar de importar o banco: require_once "../config/banco.php";
+
+4 - para salvar a senha novo com uma hash dentro do banco de dados utilizar:
+ $senhaHash = password_hash($senha , PASSWORD_DEFAULT);
+isso irá criar uma hash, ai para salvar essa hash no banco trocar $senha por $hash em $q
+
+
+ 
+
+
+
